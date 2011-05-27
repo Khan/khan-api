@@ -6,7 +6,7 @@ All example code is [MIT licensed](http://en.wikipedia.org/wiki/MIT_License).
 
 ## Documentation
 
-* [Full Documentation](https://github.com/Khan/khan-api/wiki/documentation)
+* [Full Documentation](https://github.com/kamens/khan-api/wiki)
 
 ## Examples
 
