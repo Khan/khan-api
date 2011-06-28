@@ -35,7 +35,7 @@ class TestOAuthClient(object):
 
         return OAuthToken.from_string(response)
 
-    def access_resource(self, relative_url, access_token):
+    def access_resource(self, relative_url, access_token, method="GET"):
 
         full_url = self.server_url + relative_url
         url = urlparse.urlparse(full_url)
@@ -47,12 +47,16 @@ class TestOAuthClient(object):
                 self.consumer,
                 token = access_token,
                 http_url = full_url,
-                parameters = query_params
+                parameters = query_params,
+                http_method=method
                 )
 
         oauth_request.sign_request(OAuthSignatureMethod_HMAC_SHA1(), self.consumer, access_token)
 
-        response = get_response(oauth_request.to_url())
+        if method == "GET":
+            response = get_response(oauth_request.to_url())
+        else:
+            response = post_response(full_url, oauth_request.to_postdata())
 
         return response.strip()
 
@@ -61,6 +65,18 @@ def get_response(url):
     file = None
     try:
         file = urllib2.urlopen(url)
+        response = file.read()
+    finally:
+        if file:
+            file.close()
+
+    return response
+
+def post_response(url, data):
+    response = ""
+    file = None
+    try:
+        file = urllib2.urlopen(url, data)
         response = file.read()
     finally:
         if file:
