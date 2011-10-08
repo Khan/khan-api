@@ -18,7 +18,11 @@ All example code is [MIT licensed](http://en.wikipedia.org/wiki/MIT_License).
 4. A browser will pop up for you to walk through the authentication flow. When done, it will redirect you to a page that says "Ok" and in the URL there will be two parameter values you need: `oauth_token` and `oauth_token_secret`.
 5. Go back to the test.py command line and enter your new token and secret.
 6. You'll now have a loop that lets you run Khan Academy API queries, authenticated as the user you logged in as.
-7. Example:
+7. Examples:
+
+  * /api/v1/playlists
+  * /api/v1/user/videos?email=kamens@gmail.com
+  * /api/v1/user/videos?email=http://facebookid.khanacademy.org/123456789
 
 <img src="http://i.imgur.com/M5h4O.png"/>
 
