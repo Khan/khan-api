@@ -23,6 +23,7 @@ All example code is [MIT licensed](http://en.wikipedia.org/wiki/MIT_License).
   * /api/v1/playlists
   * /api/v1/user/videos?email=kamens@gmail.com
   * /api/v1/user/videos?email=http://facebookid.khanacademy.org/123456789
+  * /api/v1/user/exercises/addition_1/log?email=http://facebookid.khanacademy.org/123456789&dt_start=2011-03-19T08:00:00Z&dt_end=2011-03-19T17:00:00Z
 
 <img src="http://i.imgur.com/M5h4O.png"/>
 
