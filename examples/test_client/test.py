@@ -1,11 +1,12 @@
 from test_oauth_client import TestOAuthClient
 from oauth import OAuthToken
+import time
 
 # This is a quick, gross little interactive script for testing our OAuth API.
 
 CONSUMER_KEY = ""
 CONSUMER_SECRET = ""
-SERVER_URL = "" # http://local.kamenstestapp.appspot.com:8084
+SERVER_URL = ""
 
 REQUEST_TOKEN = None
 ACCESS_TOKEN = None
@@ -35,11 +36,13 @@ def get_api_resource():
     resource_url = raw_input("Resource relative url (/api/v1/playlists): ") or "/api/v1/playlists"
 
     client = TestOAuthClient(SERVER_URL, CONSUMER_KEY, CONSUMER_SECRET)
+    start = time.time()
     response = client.access_resource(resource_url, ACCESS_TOKEN)
+    end = time.time()
 
     print "\n"
     print response
-    print "\n"
+    print "\nTime: %ss\n" % (end - start)
 
 def run_tests():
     global CONSUMER_KEY, CONSUMER_SECRET, SERVER_URL
