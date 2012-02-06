@@ -1,0 +1,208 @@
+
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+}
+
+
+body .navbar .navbar-inner .container {
+  width: 1100px;
+}
+
+
+#explorer {
+  margin: 0 auto;
+  width: 1100px;
+  padding: 0 10px;
+  position: fixed;
+  top: 40px;
+  bottom: 0;
+}
+
+  #explorer h2 {
+    margin: 0;
+    padding: 10px;
+  }
+
+
+  body .navbar .navbar-inner .container {
+    width: 1100px;
+    margin: 0;
+  }
+  
+#description_pane {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  height: 300px;
+  max-height: 50%;
+}
+
+  #description_container {
+    margin: 0;
+    overflow: auto;
+  }
+  
+    #description {
+      margin: 1em 0;
+      padding: 0;
+    }
+
+  
+
+#routes_pane {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  height: 400px;
+  max-height: 50%;
+}
+
+  #routes_list {
+    position: absolute;
+    bottom: 10px;
+    top: 30px;
+    left: 0;
+    right: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+
+
+#response_pane {
+  width: 600px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  bottom: 10px;
+}
+
+.pane {
+  width: 440px;
+  margin-right: 20px;
+}
+
+#action_container {
+  margin: 1em 0;
+}
+
+pre {
+  white-space: pre-wrap; /* css-3 */
+  white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  word-wrap: break-word; /* Internet Explorer 5.5+ */
+  line-height: 17px;
+  padding: 0 10px;
+  margin: 0;
+  border: 0;
+}
+
+code {
+  border: 0;
+}
+
+#status {
+  -webkit-border-top-right-radius: 5px;
+  -webkit-border-top-left-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  -moz-border-radius-topleft: 5px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  position: absolute;
+  padding: 10px 10px 0;
+  margin: 0;
+  height: 30px;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: #fff;
+  background-color: #000;
+}
+
+#response_wrapper {
+  overflow-x: auto;
+  overflow-y: auto;
+  position: absolute;
+  top: 40px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+#response_pre {
+  padding: 10px;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+
+#response_pre code {
+  color: #000 !important;
+}
+
+
+code {
+  font-family: 'Bitstream Vera Sans Mono', Menlo, 'Andale Mono', monospace;
+  font-size: 14px;
+}
+
+form.input {
+  padding: 0 10px;
+}
+
+#url {
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  width: 408px;
+  padding: 2px 4px;
+}
+
+#parameters_container table {
+  margin-top: 0.5em;
+}
+
+  #parameters_container table tbody th {
+    font-size: 14px;
+  }
+
+  #parameters_container table tbody th,
+  #parameters_container table thead th.parameter {
+    padding-right: 1em;
+    vertical-align: middle;
+    text-align: right;
+  }
+  
+  #parameters_container table tbody td {
+  }
+  
+  #parameters_container table tbody td input {
+    margin-bottom: 0;
+  }
+  
+  
+/* Syntax highlighting. */
+code.json .string {
+  color: #7F9152;
+}
+code.json .constant {
+  color: #594976;
+  font-weight: bold;
+}
+code.json .number {
+  color: #F0943A;
+}
+code.json .property {
+  color: #E84125;
+}
+code.json a {
+  text-decoration: underline;
+}

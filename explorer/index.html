@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Khan Academy API Explorer</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+    <script type="text/javascript" src="js/underscore.js"></script>
+    <script type="text/javascript" src="js/backbone.js"></script>
+    <script type="text/javascript" src="js/pretty_json.js"></script>
+    <script type="text/javascript" src="js/fluorescence.js"></script>
+
+    <script type="text/javascript" charset="utf-8">
+        Fluorescence.addLanguage('json',
+          {
+            urlString1: {
+              pattern: /(")(\/[^"]+[^\\])(")/,
+              replacement: "<span class='string'>#{1}<a href='#{2}'>#{2}</a>#{3}</span>"
+            },
+
+            urlString2: {
+              pattern: /(')(\/[^']+[^\\])(')/,
+              replacement: "<span class='string'>#{1}<a href='#{2}'>#{2}</a>#{3}</span>"
+            },
+
+            property: {
+              pattern: /"([A-Za-z0-9_$]+?)":\s/,
+              replacement: "<span class='#{0}'>\"#{1}\"</span>: "
+            },
+
+            string: {
+              pattern: /'[^']*[^\\]?'|"[^"]*[^\\]?"/
+            },
+
+            constant: {
+              pattern: /\b(false|null|super|this|true)\b/
+            },
+
+            number: {
+              pattern: /\b((0(x|X)[0-9a-fA-F]+)|([0-9]+(\.[0-9]+)?))\b/
+            }
+          }
+        );
+    </script>
+    
+    
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+  </head>
+  
+  <body>
+    
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#">Khan Academy API Explorer</a>
+          <ul class="nav">
+            <!-- Address Bar -->
+            <form class="input navbar-search pull-left">
+              <input type="text" id="url" value="" placeholder="Enter the URL of an API method" />
+            </form>
+          </ul>
+        </div> <!-- .container -->
+      </div> <!-- .navbar-inner -->
+    </div> <!-- .navbar -->
+    
+    <div id="explorer">
+      
+      <!-- Top-left. Describes the current API method. -->
+      <div id="description_pane" class="pane">
+        <h3>Description</h3>
+
+        <div id="description_container">
+          <form id="description" class="form-vertical">
+            <div id="action_container"></div>
+        
+            <div id="parameters_container">
+              <div id="parameters">
+                <table id="parameters_table"
+                 class="table table-condensed table-bordered"
+                 style="display: none;">
+                  <thead>
+                    <tr>
+                      <th class="parameter">Parameter</th>
+                      <th>Value</th>
+                    </tr>
+                  </thead>
+                  <tbody id="parameters_tbody"></tbody>
+                </table>
+              </div> <!-- #parameters -->
+            </div> <!-- #parameters_container -->
+          </form> <!-- #description -->
+          
+        </div> <!-- #description_container -->
+        
+      </div> <!-- #description_pane -->
+      
+      <!-- Bottom-left. Lists all the API methods. -->
+      <div id="routes_pane" class="pane">
+        <h3>Methods</h3>
+        <ul class="nav nav-list well" id="routes_list"></ul>
+      </div> <!-- #routes_pane -->
+      
+      <!-- Main content area. Shows the API response. -->
+      <div id="response_pane" class="pane">
+        <p id="status" class="nav"></p>
+
+        <!-- Populated with the request headers. -->
+        <pre id="request_pre" style="display: none;"><code id="request"></code></pre>
+      
+        <div id="response_wrapper">
+          <!-- Populated with the response headers/body. -->
+          <pre id="response_pre"><code id="response_headers"></code>
+<code id="response_body" class="json"></code></pre>
+        </div>
+      
+      </div>
+      
+    </div> <!-- #explorer -->
+    
+    <script type="text/javascript" src="js/api_explorer.js"></script>
+    
+  </body>
+  
+</html>
