@@ -36,9 +36,18 @@ if (!Function.prototype.bind) {
     // * params   (current URL parameters, if any)
     // * headers  (current response headers, if any)
     request: function(url) {
+      // Blank URLs are invalid.
+      if (url === "") return;
+      
       function formatHeaders(xhr) {
-        var headers =  'HTTP/1.1 ' + xhr.status + ' ' + xhr.statusText + '\n';
-        return headers + xhr.getAllResponseHeaders();
+        var originalHeaders = decodeURIComponent(xhr.getResponseHeader('X-Original-Headers')),
+         originalStatus = xhr.getResponseHeader('X-Original-Status');
+
+        // FIXME: Hack.
+        var originalStatusText = { 401: 'Unauthorized', 200: 'OK' }[originalStatus] || "";
+        
+        var headers =  'HTTP/1.1 ' + originalStatus + ' ' + originalStatusText + '\n';
+        return headers + originalHeaders;
       }
       
       this.set({
@@ -48,7 +57,8 @@ if (!Function.prototype.bind) {
         state:    'pending'
       });
       
-      var fullUrl = 'http://www.khanacademy.org' + url;
+      var fullUrl = this.getFullURL(url);
+      console.log('fullUrl:', fullUrl);
       
       // NOTE: Switch `dataType` to 'jsonp' for browsers that don't support
       // cross-domain XHR. (Any way to feature-test this?)
@@ -70,6 +80,12 @@ if (!Function.prototype.bind) {
           state:    'done'
         });
       }.bind(this));
+    },
+    
+    getFullURL: function(url) {
+      var baseUrl = 'http://0.0.0.0:5000';
+      var encoded = encodeURI(url);
+      return baseUrl + '/proxy?url=' + encoded;
     }
   });
   
@@ -564,9 +580,15 @@ if (!Function.prototype.bind) {
       function shouldHighlightResponse(response) {
         // Check if the highlighter script is loaded.
         if (!window.Fluorescence) return false;
+
         // Don't try to highlight really long JSON responses. Beachballs like
         // crazy.
         if (response.length > 50000) return false;
+
+        // We want to prevent HTTP error responses (which are HTML) from
+        // being highlighted. We could look at the Content-Type of the 
+        // response, but let's be lazy and just look for something HTML-ish.
+        if (response.indexOf("!DOCTYPE HTML") > -1) return false;
 
         return true;
       }
@@ -602,7 +624,11 @@ if (!Function.prototype.bind) {
             head.html(headers);
 
             if (shouldHighlightResponse(response)) {
-              Fluorescence.highlight();
+              try {
+                Fluorescence.highlight();
+              } catch(e) {
+                console.error(e);
+              }
             }
           }
         });

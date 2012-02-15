@@ -6,10 +6,13 @@
     <meta charset="utf-8" />
     <title>Khan Academy API Explorer</title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
-    <script type="text/javascript" src="js/underscore.js"></script>
-    <script type="text/javascript" src="js/backbone.js"></script>
-    <script type="text/javascript" src="js/pretty_json.js"></script>
-    <script type="text/javascript" src="js/fluorescence.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/underscore.js')   }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/backbone.js')     }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/pretty_json.js')  }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/fluorescence.js') }}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/sha1.js')  }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/oauth.js') }}"></script>
 
     <script type="text/javascript" charset="utf-8">
         Fluorescence.addLanguage('json',
@@ -45,12 +48,16 @@
     </script>
     
     
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css')    }}" />
   </head>
   
-  <body>
-    
+  {% if has_access_token %}
+    <body class="has-access-token">
+  {% else %}
+    <body class="needs-access-token">
+  {% endif %}{# has_access_token #}
+  
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container">
@@ -64,6 +71,15 @@
         </div> <!-- .container -->
       </div> <!-- .navbar-inner -->
     </div> <!-- .navbar -->
+    
+    {% if not has_access_token %}
+      <div id="authenticate_alert" class="alert alert-info">
+        <p>You haven't connected with the Khan Academy site. API methods that require authentication will return <strong>401 Unauthorized</strong>.</p>
+          
+        <a class="btn btn-primary" href="{{ url_for('oauth_get_request_token') }}">Connect via OAuth</a>
+      </div> <!-- .alert -->
+    {% endif %}{# not has_access_token #}
+    
     
     <div id="explorer">
       
@@ -119,7 +135,7 @@
       
     </div> <!-- #explorer -->
     
-    <script type="text/javascript" src="js/api_explorer.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/api_explorer.js') }}"></script>
     
   </body>
   
