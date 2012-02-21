@@ -31,11 +31,18 @@ body .navbar .navbar-inner .container {
     padding: 10px;
   }
 
+.needs-access-token #explorer {
+    top: 140px;
+}
 
   body .navbar .navbar-inner .container {
     width: 1100px;
     margin: 0;
   }
+  
+#authenticate_alert {
+    margin: 0 10px;
+}
   
 #description_pane {
   position: absolute;
