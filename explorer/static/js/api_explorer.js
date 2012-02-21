@@ -58,10 +58,7 @@ if (!Function.prototype.bind) {
       });
       
       var fullUrl = this.getFullURL(url);
-      console.log('fullUrl:', fullUrl);
       
-      // NOTE: Switch `dataType` to 'jsonp' for browsers that don't support
-      // cross-domain XHR. (Any way to feature-test this?)
       var ajax = $.ajax(fullUrl, { dataType: 'json' });
       
       ajax.error(function(xhr, textStatus, errorThrown) {
@@ -83,9 +80,8 @@ if (!Function.prototype.bind) {
     },
     
     getFullURL: function(url) {
-      var baseUrl = 'http://0.0.0.0:5000';
       var encoded = encodeURI(url);
-      return baseUrl + '/proxy?url=' + encoded;
+      return '/proxy?url=' + encoded;
     }
   });
   
