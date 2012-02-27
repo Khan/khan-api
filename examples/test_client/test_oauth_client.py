@@ -12,10 +12,11 @@ class TestOAuthClient(object):
         self.server_url = server_url
         self.consumer = OAuthConsumer(consumer_key, consumer_secret)
 
-    def start_fetch_request_token(self):
+    def start_fetch_request_token(self, callback=None):
         oauth_request = OAuthRequest.from_consumer_and_token(
                 self.consumer,
-                http_url = "%s/api/auth/request_token" % self.server_url
+                callback=callback,
+                http_url="%s/api/auth/request_token" % self.server_url
                 )
 
         oauth_request.sign_request(OAuthSignatureMethod_HMAC_SHA1(), self.consumer, None)
@@ -25,8 +26,9 @@ class TestOAuthClient(object):
 
         oauth_request = OAuthRequest.from_consumer_and_token(
                 self.consumer,
-                token = request_token,
-                http_url = "%s/api/auth/access_token" % self.server_url
+                token=request_token,
+                verifier=request_token.verifier,
+                http_url="%s/api/auth/access_token" % self.server_url
                 )
 
         oauth_request.sign_request(OAuthSignatureMethod_HMAC_SHA1(), self.consumer, request_token)
