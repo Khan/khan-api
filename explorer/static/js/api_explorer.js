@@ -80,7 +80,7 @@ if (!Function.prototype.bind) {
     },
     
     getFullURL: function(url) {
-      var encoded = encodeURI(url);
+      var encoded = encodeURIComponent(url);
       return '/proxy?url=' + encoded;
     }
   });
@@ -367,7 +367,7 @@ if (!Function.prototype.bind) {
       if (!names) return object;
       for (var i = 0, len = names.length, name; i < len; i++) {
         name = names[i].substring(1);
-        object[name] = params[i];
+        object[name] = decodeURIComponent(params[i]);
       }
       
       return object;
@@ -382,7 +382,7 @@ if (!Function.prototype.bind) {
       var pairs = queryString.split('&');
       _.each(pairs, function(whole) {
         var pair = whole.split('=');
-        params[pair[0]] = pair[1];
+        params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
       });
       
       return params;
@@ -395,7 +395,7 @@ if (!Function.prototype.bind) {
       
       for (var name in params) {
         if (url.indexOf(':' + name) > -1) {
-          url = url.replace(':' + name, params[name]);
+          url = url.replace(':' + name, encodeURIComponent(params[name]));
           delete params[name];
         }
       }
@@ -405,7 +405,7 @@ if (!Function.prototype.bind) {
       var queryStringParts = [];
       for (name in params) {
         if (!params[name] || params[name] === '') continue;
-        queryStringParts.push(name + '=' + params[name]);
+        queryStringParts.push(encodeURIComponent(name) + '=' + encodeURIComponent(params[name]));
       }
       
       if (queryStringParts.length > 0) {
@@ -467,12 +467,10 @@ if (!Function.prototype.bind) {
         }
         // Catch both null and undefined here.
         if (value == null) value = '';
-        var row = "";
-        row += "<tr>\n";
-        row += "  <th>" + name + label + "</th>\n";
-        row += "  <td><input type='text' name='" +
-         name + "' value='" + value + "' /></td>\n";
-        row += "</tr>\n";
+        var row = $("<tr><th></th><td><input type='text'/></td></tr>")
+            .find("th").text(name).append(label).end()
+            .find("input").attr({name: name, value: value}).end()
+            .get(0).outerHTML;
         
         return row;
       }
@@ -528,6 +526,7 @@ if (!Function.prototype.bind) {
       // Chop off any trailing slash. (Preserving a query string, if it
       // exists.)
       url = url.replace(/\/(?=$|\?.*?)/, '');
+      url = encodeURIComponent(url);
 
       // Set whatever is in the text field as the URL fragment. The router
       // will take care of the rest.
@@ -549,7 +548,7 @@ if (!Function.prototype.bind) {
       // new URL. Then navigate there.
       var endpoint = this.model.get('endpoint');
       var newUrl   = router.interpolate(endpoint, obj);
-      router.navigate(newUrl, true);
+      router.navigate(encodeURIComponent(newUrl), true);
     },
     
     // Called whenever the URL or the response changes.
