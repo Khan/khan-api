@@ -8,7 +8,7 @@
 
 All example code is [MIT licensed](http://en.wikipedia.org/wiki/MIT_License).
 
-* There's a [small test client](https://github.com/Khan/khan-api/tree/master/examples/test_client ) in this repo that can be used to test your API calls or to serve as an example for implementing [the Khan Academy authentication flow](https://github.com/Khan/khan-api/wiki/Khan-Academy-API-Authentication).
+* There's a [small Python 2.7 test client](https://github.com/Khan/khan-api/tree/master/examples/test_client ) in this repo that can be used to test your API calls or to serve as an example for implementing [the Khan Academy authentication flow](https://github.com/Khan/khan-api/wiki/Khan-Academy-API-Authentication).
 
 * To use the test client:
 
