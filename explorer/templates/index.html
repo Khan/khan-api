@@ -1,143 +1,50 @@
 <!DOCTYPE html>
-
 <html>
-
-  <head>
-    <meta charset="utf-8" />
-    <title>Khan Academy API Explorer</title>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/underscore.js')   }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/backbone.js')     }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/pretty_json.js')  }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/fluorescence.js') }}"></script>
-
-    <script type="text/javascript" charset="utf-8">
-        Fluorescence.addLanguage('json',
-          {
-            urlString1: {
-              pattern: /(")(\/[^"]+[^\\])(")/,
-              replacement: "<span class='string'>#{1}<a href='#{2}'>#{2}</a>#{3}</span>"
-            },
-
-            urlString2: {
-              pattern: /(')(\/[^']+[^\\])(')/,
-              replacement: "<span class='string'>#{1}<a href='#{2}'>#{2}</a>#{3}</span>"
-            },
-
-            property: {
-              pattern: /"([A-Za-z0-9_$]+?)":\s/,
-              replacement: "<span class='#{0}'>\"#{1}\"</span>: "
-            },
-
-            string: {
-              pattern: /'[^']*[^\\]?'|"[^"]*[^\\]?"/
-            },
-
-            constant: {
-              pattern: /\b(false|null|super|this|true)\b/
-            },
-
-            number: {
-              pattern: /\b((0(x|X)[0-9a-fA-F]+)|([0-9]+(\.[0-9]+)?))\b/
-            }
-          }
-        );
-    </script>
-
-
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css')    }}" />
-  </head>
-
-  {% if has_access_token %}
-    <body class="has-access-token">
-  {% else %}
-    <body class="needs-access-token">
-  {% endif %}{# has_access_token #}
-
-    <div class="navbar">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="brand" href="#">Khan Academy API Explorer</a>
-          <ul class="nav">
-            <!-- Address Bar -->
-            <form class="input navbar-search pull-left">
-              <input type="text" id="url" value="" placeholder="Enter the URL of an API method" />
-            </form>
-          </ul>
-        </div> <!-- .container -->
-      </div> <!-- .navbar-inner -->
-    </div> <!-- .navbar -->
-
-    {% if not has_access_token %}
-      <div id="authenticate_alert" class="alert alert-info">
-        <p>You haven't connected with the Khan Academy site. API methods that require authentication will return <strong>401 Unauthorized</strong>.</p>
-
-        <a class="btn btn-primary" href="{{ url_for('oauth_get_request_token') }}">Connect via OAuth</a>
-      </div> <!-- .alert -->
-    {% endif %}{# not has_access_token #}
-
-
-    <div id="explorer">
-
-      <!-- Top-left. Describes the current API method. -->
-      <div id="description_pane" class="pane">
-        <h3>Tips and Tricks</h3>
-        <p>After each query, the api's response json is available to you for inspecting via the <code>window.API_RESPONSE</code> variable.
-        <p>Additionally, <a href="http://underscorejs.org/">underscore.js</a> and <a href="http://api.jquery.com/">jquery</a> are available in the console.</p>
-
-        <h3>Description</h3>
-
-        <div id="description_container">
-          <form id="description" class="form-vertical">
-            <div id="action_container"></div>
-
-            <div id="parameters_container">
-              <div id="parameters">
-                <table id="parameters_table"
-                 class="table table-condensed table-bordered"
-                 style="display: none;">
-                  <thead>
-                    <tr>
-                      <th class="parameter">Parameter</th>
-                      <th>Value</th>
-                    </tr>
-                  </thead>
-                  <tbody id="parameters_tbody"></tbody>
-                </table>
-              </div> <!-- #parameters -->
-            </div> <!-- #parameters_container -->
-          </form> <!-- #description -->
-
-        </div> <!-- #description_container -->
-
-      </div> <!-- #description_pane -->
-
-      <!-- Bottom-left. Lists all the API methods. -->
-      <div id="routes_pane" class="pane">
-        <h3>Methods</h3>
-        <ul class="nav nav-list well" id="routes_list"></ul>
-      </div> <!-- #routes_pane -->
-
-      <!-- Main content area. Shows the API response. -->
-      <div id="response_pane" class="pane">
-        <p id="status" class="nav"></p>
-
-        <!-- Populated with the request headers. -->
-        <pre id="request_pre" style="display: none;"><code id="request"></code></pre>
-
-        <div id="response_wrapper">
-          <!-- Populated with the response headers/body. -->
-          <pre id="response_pre"><code id="response_headers"></code>
-<code id="response_body" class="json"></code></pre>
+    <head>
+        <meta charset="utf-8" />
+        <title>Khan Academy API Explorer</title>
+        <link rel="shortcut icon" href="http://www.khanacademy.org/favicon.ico?leaf">
+        <script type="text/javascript">
+            window.explorer = {
+                isLoggedIn: {{"true" if is_logged_in else "false"}}
+            };
+        </script>
+        <script type="text/javascript" data-main="{{ url_for('static', filename='js/app.js') }}" src="{{ url_for('static', filename='third-party/js/require.min.js') }}"></script>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='third-party/css/bootstrap.min.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='third-party/css/prism.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='third-party/css/museo-sans.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}" />
+    </head>
+    <body>
+        <div class="banner">
+            <div class="container">
+                <div class="row">
+                    <div class="text-hero col-lg-6 col-offset-5 col-11">
+                        <a href="http://khanacademy.org">
+                            <img class="logo" src="{{ url_for('static', filename='img/ka-simplified-logo-white.png') }}">
+                        </a>
+                        <p>Khan Academy</p>
+                        <p>API Explorer</p>
+                    </div>
+                </div>
+            </div>
         </div>
-
-      </div>
-
-    </div> <!-- #explorer -->
-
-    <script type="text/javascript" src="{{ url_for('static', filename='js/api_explorer.js') }}"></script>
-
-  </body>
-
+        <div class="container">
+            <div id="content" class="content"></div>
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-offset-5 col-lg-2">
+                        <img src="{{ url_for('static', filename='img/khan-logo-vertical-transparent.png') }}">
+                    </div>
+                </div>
+                <div class="row copy">
+                    <div class="col-lg-12">
+                        Khan Academy © 2013 Except where noted, all rights reserved.
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
 </html>

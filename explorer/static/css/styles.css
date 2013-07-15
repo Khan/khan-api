@@ -1,215 +1,2468 @@
-
-.clearfix:before,
-.clearfix:after {
-    content: "";
-    display: table;
-}
-.clearfix:after {
-    clear: both;
-}
-.clearfix {
-    zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+h1 {
+  text-transform: capitalize;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  margin: 20px -10px 20px -15px;
+  border-bottom: solid 1px #eee;
 }
 
-
-body .navbar .navbar-inner .container {
-  width: 1100px;
+pre[class*="language-"] {
+  border: solid 2px #545454;
 }
 
-
-#explorer {
-  margin: 0 auto;
-  width: 1100px;
-  padding: 0 10px;
-  position: fixed;
-  top: 40px;
-  bottom: 0;
-}
-
-  #explorer h2 {
-    margin: 0;
-    padding: 10px;
-  }
-
-.needs-access-token #explorer {
-    top: 140px;
-}
-
-  body .navbar .navbar-inner .container {
-    width: 1100px;
-    margin: 0;
-  }
-  
-#authenticate_alert {
-    margin: 0 10px;
-}
-  
-#description_pane {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  height: 300px;
-  max-height: 50%;
-}
-
-  #description_container {
-    margin: 0;
-    overflow: auto;
-  }
-  
-    #description {
-      margin: 1em 0;
-      padding: 0;
-    }
-
-  
-
-#routes_pane {
-  position: absolute;
-  left: 10px;
-  bottom: 10px;
-  height: 400px;
-  max-height: 50%;
-}
-
-  #routes_list {
-    position: absolute;
-    bottom: 10px;
-    top: 30px;
-    left: 0;
-    right: 0;
-    overflow-x: hidden;
-    overflow-y: scroll;
-  }
-
-
-#response_pane {
-  width: 600px;
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  bottom: 10px;
-}
-
-.pane {
-  width: 440px;
-  margin-right: 20px;
-}
-
-#action_container {
-  margin: 1em 0;
+code[class*="language-"],
+pre[class*="language-"] {
+  white-space: pre-wrap;
 }
 
 pre {
-  white-space: pre-wrap; /* css-3 */
-  white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
-  white-space: -pre-wrap; /* Opera 4-6 */
-  white-space: -o-pre-wrap; /* Opera 7 */
-  word-wrap: break-word; /* Internet Explorer 5.5+ */
-  line-height: 17px;
-  padding: 0 10px;
-  margin: 0;
-  border: 0;
+  background-color: #ddd;
+  white-space: pre-wrap;
 }
 
-code {
-  border: 0;
+dt {
+  margin-bottom: 3px;
 }
 
-#status {
-  -webkit-border-top-right-radius: 5px;
-  -webkit-border-top-left-radius: 5px;
-  -moz-border-radius-topright: 5px;
-  -moz-border-radius-topleft: 5px;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
-  position: absolute;
-  padding: 10px 10px 0;
-  margin: 0;
-  height: 30px;
+.placeholder {
+  color: #aaa;
+}
+
+input.required {
+  padding-right: 25px;
+  border-color: rgba(186,61,102,0.8);
+}
+
+input.required:focus {
+  border-color: rgba(192,2,2,0.8);
+  outline: 0;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(192,2,2,.6);
+}
+
+.sidenav {
+  margin-bottom: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-shadow: 0 1px 0 #fff;
+  background-color: #f7f7f7;
+  border-radius: 4px;
+}
+
+.sidebar {
+  margin: 20px 0 30px;
+}
+
+.sidebar.affix {
   top: 0;
-  left: 0;
-  right: 0;
+}
+
+@media (min-width: 1200px) {
+  .sidebar.affix {
+    width: 370px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .sidebar.affix {
+    width: 293px;
+  }
+}
+
+@media (max-width: 991px) {
+  .sidebar.affix {
+    position: static;
+    width: auto;
+  }
+
+}
+
+.sidebar.affix-bottom {
+  width: 370px;
+  position: fixed;
+  bottom: 285px;
+}
+
+.sidebar .nav > li > a {
+  display: block;
+  color: #555;
+  padding: 8px 20px;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  white-space: pre;
+  overflow: hidden;
+}
+
+.sidebar .nav > li > a:hover,
+.sidebar .nav > li > a:focus {
+  text-decoration: none;
+  background-color: #eee;
+  border-right: 1px solid #aaa;
+}
+
+.sidebar .nav > .active > a,
+.sidebar .nav > .active:hover > a,
+.sidebar .nav > .active:focus > a {
+  font-weight: 500;
+  color: #ba3d66;
+  background-color: transparent;
+  border-right: 1px solid #ba3d66;
+}
+
+.sidebar .nav > .active > ul {
+  display: block;
+}
+
+.sidebar .nav .nav {
+  display: none;
+  margin-bottom: 5px;
+}
+
+.sidebar .nav .nav > .active > ul {
+  display: block;
+}
+
+.sidebar .nav .nav > li > a {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 30px;
+  font-size: 90%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.content .docs,
+.content .sidebar {
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.content .vertical-divider {
+  border-left: solid 1px #eee;
+}
+
+.label.login-required {
+  background-color: #e35d04;
+}
+
+.label.open-access,
+.label-endpoint {
+  background-color: #297395;
+}
+
+.banner {
+  position: relative;
+  background-color: #2c3747;
+  background-image: url("/static/img/homepage-banner-leaves-partwhite.png");
+  background-repeat: no-repeat;
+  min-height: 369px;
+}
+
+.banner .text-hero {
+  text-align: right;
+  font-family: MuseoSans500, sans-serif;
+  font-size: 60px;
   color: #fff;
-  background-color: #000;
 }
 
-#response_wrapper {
-  overflow-x: auto;
-  overflow-y: auto;
+.banner .text-hero .logo {
+  padding-top: 30px;
+  padding-bottom: 70px;
+}
+
+@media (max-width: 767px) {
+  .banner {
+    background-image: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .banner {
+    background-position: 5%;
+  }
+}
+
+@media (min-width: 992px) {
+  .banner {
+    background-position: 12%;
+  }
+}
+
+@media (min-width: 1600px) {
+  .banner {
+    background-position: 18%;
+  }
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.panel {
+  padding-bottom: 0;
+}
+
+/* Not all elements have all options specified though all markup
+ * is always prsent. By default p has a margin-bottom which would be visible.
+ */
+.panel p:empty {
+  display: none;
+}
+
+.panel.collapsed {
+  padding-bottom: 0;
+}
+
+.panel.collapsed .panel-content {
+  display: none;
+}
+
+.panel.collapsed .panel-heading {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.panel.endpoint {
+  border-color: #30a7de;
+}
+
+.panel.endpoint .panel-heading {
+  cursor: pointer;
+  background-color: #30a7de;
+  color: #fff;
+  border-color: #30a7de;
+  margin-bottom: 0;
+}
+
+.panel .panel-content {
+  display: block;
+  margin: 0 -15px;
+  padding: 0 15px;
+}
+
+.panel .panel-heading .label {
+  margin-top: 2.5px;
+}
+
+.panel .panel-heading .access-control {
+  text-transform: capitalize;
+  margin-right: 15px;
+}
+
+.arguments {
+  padding: 15px 15px 0;
+  /* Used to stop slideDown from animating padding and margin
+   * Causes unnecessary jump in height when starting animation
+   */
+  padding-top: 15px !important;
+  margin-bottom: 10px !important;
+  border-bottom: solid 1px #eee;
+  background-color: #f7f7f7;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.6);
+  position: relative;
+  /*min-height: 30px;*/
+}
+
+.arguments .arg span {
+  display: none;
+}
+
+.arguments .arg span.required {
+  display: inline;
+  color: rgba(192,2,2,0.8);
   position: absolute;
-  top: 40px;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  right: 24px;
+  line-height: 38px;
 }
 
-#response_pre {
-  padding: 10px;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
+.arguments.reveal {
+  height: 30px;
+  overflow: hidden;
+  transition: height 0.4s;
 }
 
-#response_pre code {
-  color: #000 !important;
+.arguments.reveal:after {
+  content: "Make A Call";
+  text-shadow: 0 1px 0 rgba(0,0,0,0.8);
+  color: #f7f7f7;
+  font-family: MuseoSans500;
+  font-size: 18px;
+  line-height: 1.428571429;
+  position: absolute;
+  top: 0;
+  margin: 0 -15px;
+  padding: 3px 15px;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,0.7);
+  transition: height 0.4s, padding-top 0.4s;
 }
 
+.arguments.reveal:hover {
+  height: 45px;
+}
 
-code {
-  font-family: 'Bitstream Vera Sans Mono', Menlo, 'Andale Mono', monospace;
+.arguments.reveal:hover:after {
+  padding-top: 11px;
+  height: 45px;
+}
+
+.arguments .arguments-hide {
+  position: absolute;
+  text-shadow: 0 1px 0 rgba(51,51,51,0.8);
+  color: #222;
+  font-family: MuseoSans500;
   font-size: 14px;
+  line-height: 1.428571429;
+  bottom: 0;
+  right: 50px;
+  padding: 10px 6px;
+  box-shadow: 0 -1px 4px rgba(0,0,0,0.6);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: rgba(237,237,237,0.6);
+  transition: padding 0.3s;
+  z-index: 9999;
 }
 
-form.input {
-  padding: 0 10px;
+.arguments .arguments-hide:hover {
+  padding-bottom: 15px;
 }
 
-#url {
-  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
-  font-size: 16px;
-  font-weight: bold;
-  width: 408px;
-  padding: 2px 4px;
+.arguments .description {
+  margin-top: -10px;
+  color: #555;
+  padding-left: 18px;
 }
 
-#parameters_container table {
-  margin-top: 0.5em;
+.arguments .try-button {
+  padding: 19px;
 }
 
-  #parameters_container table tbody th {
-    font-size: 14px;
+.arguments .loader-box {
+  margin: 20px 0;
+}
+
+.arguments .throbber-block {
+  border-right: 2px solid #f7f7f7;
+  border-bottom: 2px solid #f7f7f7;
+}
+
+.arguments .api-response {
+  margin-bottom: 15px;
+  z-index: 1;
+}
+
+.arguments .login-box {
+  background-color: #ddd;
+  margin-bottom: 15px;
+  padding: 20px;
+  box-shadow: inset 0 0 6px 0 rgba(0,0,0,0.6);
+  border-radius: 4px;
+}
+
+.arguments .btn-login {
+  color: #fff;
+  background-color: #e35d04;
+  border-color: #e35d04;
+}
+
+.arguments .btn-login:hover,
+.arguments .btn-login:focus,
+.arguments .btn-login:active,
+.arguments .btn-login.active {
+  background-color: #d85804;
+  border-color: #cc5404;
+}
+
+.arguments .btn-api-action {
+  color: #fff;
+  background-color: #89b908;
+  border-color: #89b908;
+}
+
+.arguments .btn-api-action:hover,
+.arguments .btn-api-action:focus,
+.arguments .btn-api-action:active,
+.arguments .btn-api-action.active {
+  background-color: #82b008;
+  border-color: #7ba707;
+}
+
+.footer {
+  border-top: solid 1px #eee;
+  background-color: #f7f7f7;
+  padding: 15px 0;
+  text-align: center;
+}
+
+.footer .copy {
+  border-top: solid 1px #ddd;
+  margin-top: 20px;
+  padding-top: 15px;
+}
+
+.loader-box {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+/**
+ * Styles for a throbber made from a 9-block grid.
+ * -------------
+ * | 0 | 1 | 2 |
+ * | 7 | 8 | 3 |
+ * | 6 | 5 | 4 |
+ * -------------
+ * The result of all these animations is to have a dark blue block
+ * (@colorProficient) move clockwise from numbers 0 through 7, with a light
+ * blue block (@colorPracticed) trailing it. It makes one full cycle every
+ * second, with the other blocks at @grayLighter.
+ *
+ * Like or hate this? Blame Marcia + Jason. :)
+ */
+.throbber-row {
+  margin: auto;
+  width: 100px;
+}
+
+.throbber-block {
+  background: #ddd;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  float: left;
+  height: 30px;
+  width: 30px;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease;
+  -moz-animation-duration: 1s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: ease;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+}
+
+.block-8 {
+  background: #f7f7f7;
+}
+
+.block-0 {
+  -webkit-animation-name: block0;
+  -moz-animation-name: block0;
+  animation-name: block0;
+}
+
+.block-1 {
+  -webkit-animation-name: block1;
+  -moz-animation-name: block1;
+  animation-name: block1;
+}
+
+.block-2 {
+  -webkit-animation-name: block2;
+  -moz-animation-name: block2;
+  animation-name: block2;
+}
+
+.block-3 {
+  -webkit-animation-name: block3;
+  -moz-animation-name: block3;
+  animation-name: block3;
+}
+
+.block-4 {
+  -webkit-animation-name: block4;
+  -moz-animation-name: block4;
+  animation-name: block4;
+}
+
+.block-5 {
+  -webkit-animation-name: block5;
+  -moz-animation-name: block5;
+  animation-name: block5;
+}
+
+.block-6 {
+  -webkit-animation-name: block6;
+  -moz-animation-name: block6;
+  animation-name: block6;
+}
+
+.block-7 {
+  -webkit-animation-name: block7;
+  -moz-animation-name: block7;
+  animation-name: block7;
+}
+
+/* Webkit keyframes */
+@-webkit-keyframes block0 {
+  0% {
+    background: #0080c9;
   }
 
-  #parameters_container table tbody th,
-  #parameters_container table thead th.parameter {
-    padding-right: 1em;
-    vertical-align: middle;
-    text-align: right;
+
+  12.5% {
+    background: #96d9ff;
   }
-  
-  #parameters_container table tbody td {
+
+
+  25% {
+    background: #ddd;
   }
-  
-  #parameters_container table tbody td input {
-    margin-bottom: 0;
+
+
+  87.5% {
+    background: #ddd;
   }
-  
-  
-/* Syntax highlighting. */
-code.json .string {
-  color: #7F9152;
+
+
+  100% {
+    background: #0080c9;
+  }
+
 }
-code.json .constant {
-  color: #594976;
-  font-weight: bold;
+
+@-webkit-keyframes block1 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #0080c9;
+  }
+
+
+  25% {
+    background: #96d9ff;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
 }
-code.json .number {
-  color: #F0943A;
+
+@-webkit-keyframes block2 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #0080c9;
+  }
+
+
+  37.5% {
+    background: #96d9ff;
+  }
+
+
+  50% {
+    background: #ddd;
+  }
+
 }
-code.json .property {
-  color: #E84125;
+
+@-webkit-keyframes block3 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #0080c9;
+  }
+
+
+  50% {
+    background: #96d9ff;
+  }
+
+
+  62.5% {
+    background: #ddd;
+  }
+
 }
-code.json a {
-  text-decoration: underline;
+
+@-webkit-keyframes block4 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+
+  50% {
+    background: #0080c9;
+  }
+
+
+  62.5% {
+    background: #96d9ff;
+  }
+
+
+  75% {
+    background: #ddd;
+  }
+
 }
+
+@-webkit-keyframes block5 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+
+  50% {
+    background: #ddd;
+  }
+
+
+  62.5% {
+    background: #0080c9;
+  }
+
+
+  75% {
+    background: #96d9ff;
+  }
+
+
+  87.5% {
+    background: #ddd;
+  }
+
+}
+
+@-webkit-keyframes block6 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+
+  50% {
+    background: #ddd;
+  }
+
+
+  62.5% {
+    background: #ddd;
+  }
+
+
+  75% {
+    background: #0080c9;
+  }
+
+
+  87.5% {
+    background: #96d9ff;
+  }
+
+
+  100% {
+    background: #ddd;
+  }
+
+}
+
+@-webkit-keyframes block7 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+
+  50% {
+    background: #ddd;
+  }
+
+
+  62.5% {
+    background: #ddd;
+  }
+
+
+  75% {
+    background: #ddd;
+  }
+
+
+  87.5% {
+    background: #0080c9;
+  }
+
+
+  100% {
+    background: #96d9ff;
+  }
+
+}
+
+/* Moz keyframes */
+@-moz-keyframes block0 {
+  0% {
+    background: #0080c9;
+  }
+
+
+  12.5% {
+    background: #96d9ff;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  87.5% {
+    background: #ddd;
+  }
+
+
+  100% {
+    background: #0080c9;
+  }
+
+}
+
+@-moz-keyframes block1 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #0080c9;
+  }
+
+
+  25% {
+    background: #96d9ff;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+}
+
+@-moz-keyframes block2 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #0080c9;
+  }
+
+
+  37.5% {
+    background: #96d9ff;
+  }
+
+
+  50% {
+    background: #ddd;
+  }
+
+}
+
+@-moz-keyframes block3 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #0080c9;
+  }
+
+
+  50% {
+    background: #96d9ff;
+  }
+
+
+  62.5% {
+    background: #ddd;
+  }
+
+}
+
+@-moz-keyframes block4 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+
+  50% {
+    background: #0080c9;
+  }
+
+
+  62.5% {
+    background: #96d9ff;
+  }
+
+
+  75% {
+    background: #ddd;
+  }
+
+}
+
+@-moz-keyframes block5 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+
+  50% {
+    background: #ddd;
+  }
+
+
+  62.5% {
+    background: #0080c9;
+  }
+
+
+  75% {
+    background: #96d9ff;
+  }
+
+
+  87.5% {
+    background: #ddd;
+  }
+
+}
+
+@-moz-keyframes block6 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+
+  50% {
+    background: #ddd;
+  }
+
+
+  62.5% {
+    background: #ddd;
+  }
+
+
+  75% {
+    background: #0080c9;
+  }
+
+
+  87.5% {
+    background: #96d9ff;
+  }
+
+
+  100% {
+    background: #ddd;
+  }
+
+}
+
+@-moz-keyframes block7 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+
+  50% {
+    background: #ddd;
+  }
+
+
+  62.5% {
+    background: #ddd;
+  }
+
+
+  75% {
+    background: #ddd;
+  }
+
+
+  87.5% {
+    background: #0080c9;
+  }
+
+
+  100% {
+    background: #96d9ff;
+  }
+
+}
+
+/* Keyframes */
+@-moz-keyframes block0 {
+  0% {
+    background: #0080c9;
+  }
+
+
+  12.5% {
+    background: #96d9ff;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  87.5% {
+    background: #ddd;
+  }
+
+
+  100% {
+    background: #0080c9;
+  }
+
+}
+
+@-webkit-keyframes block0 {
+  0% {
+    background: #0080c9;
+  }
+
+
+  12.5% {
+    background: #96d9ff;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  87.5% {
+    background: #ddd;
+  }
+
+
+  100% {
+    background: #0080c9;
+  }
+
+}
+
+@-o-keyframes block0 {
+  0% {
+    background: #0080c9;
+  }
+
+
+  12.5% {
+    background: #96d9ff;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  87.5% {
+    background: #ddd;
+  }
+
+
+  100% {
+    background: #0080c9;
+  }
+
+}
+
+@-ms-keyframes block0 {
+  0% {
+    background: #0080c9;
+  }
+
+
+  12.5% {
+    background: #96d9ff;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  87.5% {
+    background: #ddd;
+  }
+
+
+  100% {
+    background: #0080c9;
+  }
+
+}
+
+@keyframes block0 {
+  0% {
+    background: #0080c9;
+  }
+
+
+  12.5% {
+    background: #96d9ff;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  87.5% {
+    background: #ddd;
+  }
+
+
+  100% {
+    background: #0080c9;
+  }
+
+}
+
+@-moz-keyframes block1 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #0080c9;
+  }
+
+
+  25% {
+    background: #96d9ff;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+}
+
+@-webkit-keyframes block1 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #0080c9;
+  }
+
+
+  25% {
+    background: #96d9ff;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+}
+
+@-o-keyframes block1 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #0080c9;
+  }
+
+
+  25% {
+    background: #96d9ff;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+}
+
+@-ms-keyframes block1 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #0080c9;
+  }
+
+
+  25% {
+    background: #96d9ff;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+}
+
+@keyframes block1 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #0080c9;
+  }
+
+
+  25% {
+    background: #96d9ff;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+}
+
+@-moz-keyframes block2 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #0080c9;
+  }
+
+
+  37.5% {
+    background: #96d9ff;
+  }
+
+
+  50% {
+    background: #ddd;
+  }
+
+}
+
+@-webkit-keyframes block2 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #0080c9;
+  }
+
+
+  37.5% {
+    background: #96d9ff;
+  }
+
+
+  50% {
+    background: #ddd;
+  }
+
+}
+
+@-o-keyframes block2 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #0080c9;
+  }
+
+
+  37.5% {
+    background: #96d9ff;
+  }
+
+
+  50% {
+    background: #ddd;
+  }
+
+}
+
+@-ms-keyframes block2 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #0080c9;
+  }
+
+
+  37.5% {
+    background: #96d9ff;
+  }
+
+
+  50% {
+    background: #ddd;
+  }
+
+}
+
+@keyframes block2 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #0080c9;
+  }
+
+
+  37.5% {
+    background: #96d9ff;
+  }
+
+
+  50% {
+    background: #ddd;
+  }
+
+}
+
+@-moz-keyframes block3 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #0080c9;
+  }
+
+
+  50% {
+    background: #96d9ff;
+  }
+
+
+  62.5% {
+    background: #ddd;
+  }
+
+}
+
+@-webkit-keyframes block3 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #0080c9;
+  }
+
+
+  50% {
+    background: #96d9ff;
+  }
+
+
+  62.5% {
+    background: #ddd;
+  }
+
+}
+
+@-o-keyframes block3 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #0080c9;
+  }
+
+
+  50% {
+    background: #96d9ff;
+  }
+
+
+  62.5% {
+    background: #ddd;
+  }
+
+}
+
+@-ms-keyframes block3 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #0080c9;
+  }
+
+
+  50% {
+    background: #96d9ff;
+  }
+
+
+  62.5% {
+    background: #ddd;
+  }
+
+}
+
+@keyframes block3 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #0080c9;
+  }
+
+
+  50% {
+    background: #96d9ff;
+  }
+
+
+  62.5% {
+    background: #ddd;
+  }
+
+}
+
+@-moz-keyframes block4 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+
+  50% {
+    background: #0080c9;
+  }
+
+
+  62.5% {
+    background: #96d9ff;
+  }
+
+
+  75% {
+    background: #ddd;
+  }
+
+}
+
+@-webkit-keyframes block4 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+
+  50% {
+    background: #0080c9;
+  }
+
+
+  62.5% {
+    background: #96d9ff;
+  }
+
+
+  75% {
+    background: #ddd;
+  }
+
+}
+
+@-o-keyframes block4 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+
+  50% {
+    background: #0080c9;
+  }
+
+
+  62.5% {
+    background: #96d9ff;
+  }
+
+
+  75% {
+    background: #ddd;
+  }
+
+}
+
+@-ms-keyframes block4 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+
+  50% {
+    background: #0080c9;
+  }
+
+
+  62.5% {
+    background: #96d9ff;
+  }
+
+
+  75% {
+    background: #ddd;
+  }
+
+}
+
+@keyframes block4 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+
+  50% {
+    background: #0080c9;
+  }
+
+
+  62.5% {
+    background: #96d9ff;
+  }
+
+
+  75% {
+    background: #ddd;
+  }
+
+}
+
+@-moz-keyframes block5 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+
+  50% {
+    background: #ddd;
+  }
+
+
+  62.5% {
+    background: #0080c9;
+  }
+
+
+  75% {
+    background: #96d9ff;
+  }
+
+
+  87.5% {
+    background: #ddd;
+  }
+
+}
+
+@-webkit-keyframes block5 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+
+  50% {
+    background: #ddd;
+  }
+
+
+  62.5% {
+    background: #0080c9;
+  }
+
+
+  75% {
+    background: #96d9ff;
+  }
+
+
+  87.5% {
+    background: #ddd;
+  }
+
+}
+
+@-o-keyframes block5 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+
+  50% {
+    background: #ddd;
+  }
+
+
+  62.5% {
+    background: #0080c9;
+  }
+
+
+  75% {
+    background: #96d9ff;
+  }
+
+
+  87.5% {
+    background: #ddd;
+  }
+
+}
+
+@-ms-keyframes block5 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+
+  50% {
+    background: #ddd;
+  }
+
+
+  62.5% {
+    background: #0080c9;
+  }
+
+
+  75% {
+    background: #96d9ff;
+  }
+
+
+  87.5% {
+    background: #ddd;
+  }
+
+}
+
+@keyframes block5 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+
+  50% {
+    background: #ddd;
+  }
+
+
+  62.5% {
+    background: #0080c9;
+  }
+
+
+  75% {
+    background: #96d9ff;
+  }
+
+
+  87.5% {
+    background: #ddd;
+  }
+
+}
+
+@-moz-keyframes block6 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+
+  50% {
+    background: #ddd;
+  }
+
+
+  62.5% {
+    background: #ddd;
+  }
+
+
+  75% {
+    background: #0080c9;
+  }
+
+
+  87.5% {
+    background: #96d9ff;
+  }
+
+
+  100% {
+    background: #ddd;
+  }
+
+}
+
+@-webkit-keyframes block6 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+
+  50% {
+    background: #ddd;
+  }
+
+
+  62.5% {
+    background: #ddd;
+  }
+
+
+  75% {
+    background: #0080c9;
+  }
+
+
+  87.5% {
+    background: #96d9ff;
+  }
+
+
+  100% {
+    background: #ddd;
+  }
+
+}
+
+@-o-keyframes block6 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+
+  50% {
+    background: #ddd;
+  }
+
+
+  62.5% {
+    background: #ddd;
+  }
+
+
+  75% {
+    background: #0080c9;
+  }
+
+
+  87.5% {
+    background: #96d9ff;
+  }
+
+
+  100% {
+    background: #ddd;
+  }
+
+}
+
+@-ms-keyframes block6 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+
+  50% {
+    background: #ddd;
+  }
+
+
+  62.5% {
+    background: #ddd;
+  }
+
+
+  75% {
+    background: #0080c9;
+  }
+
+
+  87.5% {
+    background: #96d9ff;
+  }
+
+
+  100% {
+    background: #ddd;
+  }
+
+}
+
+@keyframes block6 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+
+  50% {
+    background: #ddd;
+  }
+
+
+  62.5% {
+    background: #ddd;
+  }
+
+
+  75% {
+    background: #0080c9;
+  }
+
+
+  87.5% {
+    background: #96d9ff;
+  }
+
+
+  100% {
+    background: #ddd;
+  }
+
+}
+
+@-moz-keyframes block7 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+
+  50% {
+    background: #ddd;
+  }
+
+
+  62.5% {
+    background: #ddd;
+  }
+
+
+  75% {
+    background: #ddd;
+  }
+
+
+  87.5% {
+    background: #0080c9;
+  }
+
+
+  100% {
+    background: #96d9ff;
+  }
+
+}
+
+@-webkit-keyframes block7 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+
+  50% {
+    background: #ddd;
+  }
+
+
+  62.5% {
+    background: #ddd;
+  }
+
+
+  75% {
+    background: #ddd;
+  }
+
+
+  87.5% {
+    background: #0080c9;
+  }
+
+
+  100% {
+    background: #96d9ff;
+  }
+
+}
+
+@-o-keyframes block7 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+
+  50% {
+    background: #ddd;
+  }
+
+
+  62.5% {
+    background: #ddd;
+  }
+
+
+  75% {
+    background: #ddd;
+  }
+
+
+  87.5% {
+    background: #0080c9;
+  }
+
+
+  100% {
+    background: #96d9ff;
+  }
+
+}
+
+@-ms-keyframes block7 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+
+  50% {
+    background: #ddd;
+  }
+
+
+  62.5% {
+    background: #ddd;
+  }
+
+
+  75% {
+    background: #ddd;
+  }
+
+
+  87.5% {
+    background: #0080c9;
+  }
+
+
+  100% {
+    background: #96d9ff;
+  }
+
+}
+
+@keyframes block7 {
+  0% {
+    background: #ddd;
+  }
+
+
+  12.5% {
+    background: #ddd;
+  }
+
+
+  25% {
+    background: #ddd;
+  }
+
+
+  37.5% {
+    background: #ddd;
+  }
+
+
+  50% {
+    background: #ddd;
+  }
+
+
+  62.5% {
+    background: #ddd;
+  }
+
+
+  75% {
+    background: #ddd;
+  }
+
+
+  87.5% {
+    background: #0080c9;
+  }
+
+
+  100% {
+    background: #96d9ff;
+  }
+
+}
+
