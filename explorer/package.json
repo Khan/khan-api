@@ -1,0 +1,18 @@
+{
+  "name": "api-explorer",
+  "version": "0.0.1",
+  "description": "",
+  "main": "",
+  "devDependencies": {
+    "react-tools": "~0.3.2"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Khan/khan-api.git"
+  },
+  "author": "Khan Academy",
+  "bugs": {
+    "url": "https://github.com/Khan/khan-api/issues"
+  }
+}
