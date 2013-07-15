@@ -1,112 +1,67 @@
-import cgi
-import urllib2
-import urlparse
+"""OAuth wrapper for API Explorer
 
-from oauth import (
-    OAuthConsumer, OAuthToken, OAuthRequest, OAuthSignatureMethod_HMAC_SHA1)
+Used to wrap requests send to API server in OAuth credentials
+"""
+import oauth
+import requests
 
 
 class APIExplorerOAuthClient(object):
     def __init__(self, server_url, consumer_key, consumer_secret):
         self.server_url = server_url
-        self.consumer = OAuthConsumer(consumer_key, consumer_secret)
+        self.consumer = oauth.OAuthConsumer(consumer_key, consumer_secret)
+        self.rest_method_mapping = {"GET": requests.get, "POST": requests.post,
+            "PUT": requests.put, "DELETE": requests.delete}
+        self.request_token_url = "{0}/api/auth/request_token".format(
+            self.server_url)
+        self.access_token_url = "{0}/api/auth/access_token".format(
+            self.server_url)
 
     def url_for_request_token(self, callback=None, parameters=None):
-        http_url = "%s/api/auth/request_token" % self.server_url
-        oauth_request = OAuthRequest.from_consumer_and_token(
-            self.consumer,
-            http_url=http_url,
-            callback=callback,
-            parameters=parameters
-            )
-        oauth_request.sign_request(
-            OAuthSignatureMethod_HMAC_SHA1(), self.consumer, None
-            )
+        oauth_request = oauth.OAuthRequest.from_consumer_and_token(
+            self.consumer, http_url=self.request_token_url, callback=callback,
+            parameters=parameters)
+
+        print oauth_request.to_url()
+        oauth_request.sign_request(oauth.OAuthSignatureMethod_HMAC_SHA1(),
+            self.consumer, None)
+        print oauth_request.to_url()
 
         return oauth_request.to_url()
 
     def url_for_access_token(self, request_token, callback=None,
                              parameters=None, verifier=None):
-        http_url = "%s/api/auth/access_token" % self.server_url
         if not verifier and request_token.verifier:
             verifier = request_token.verifier
 
-        oauth_request = OAuthRequest.from_consumer_and_token(
-            self.consumer,
-            token=request_token,
-            http_url=http_url,
-            callback=callback,
-            parameters=parameters,
-            verifier=verifier
-            )
-        oauth_request.sign_request(
-            OAuthSignatureMethod_HMAC_SHA1(), self.consumer, request_token
-            )
+        oauth_request = oauth.OAuthRequest.from_consumer_and_token(
+            self.consumer, token=request_token, http_url=self.access_token_url,
+            callback=callback, parameters=parameters, verifier=verifier)
+
+        oauth_request.sign_request(oauth.OAuthSignatureMethod_HMAC_SHA1(),
+            self.consumer, request_token)
 
         return oauth_request.to_url()
 
     def fetch_access_token(self, request_token):
-        url = self.url_for_access_token(request_token)
-        return OAuthToken.from_string(get_response(url))
+        r = requests.get(self.url_for_access_token(request_token))
+        return oauth.OAuthToken.from_string(r.text)
 
-    # Make an OAuth-wrapped API request to an arbitrary URL.
-    def access_api_resource(self, relative_url, access_token, method="GET"):
-        full_url = self.server_url + relative_url
+    def access_api_resource(self, endpoint, access_token, query_params={},
+            method="GET"):
 
-        # Escape each parameter value.
-        url = urlparse.urlparse(full_url)
-        query_params = cgi.parse_qs(url.query)
-        for key in query_params:
-            query_params[key] = query_params[key][0]
+        full_url = self.server_url + "/" + endpoint
+        method = method.upper()
 
-        oauth_request = OAuthRequest.from_consumer_and_token(
-            self.consumer,
-            token=access_token,
-            http_url=full_url,
-            parameters=query_params,
-            http_method=method
-            )
-        oauth_request.sign_request(
-            OAuthSignatureMethod_HMAC_SHA1(), self.consumer, access_token
-            )
+        oauth_request = oauth.OAuthRequest.from_consumer_and_token(
+            self.consumer, token=access_token, http_url=full_url,
+            parameters=query_params, http_method=method)
 
-        file = None
-        ret = None
+        oauth_request.sign_request(oauth.OAuthSignatureMethod_HMAC_SHA1(),
+            self.consumer, access_token)
 
-        try:
-            if method == "GET":
-                file = urllib2.urlopen(oauth_request.to_url())
-            else:
-                file = urllib2.urlopen(url.path, oauth_request.to_postdata())
+        # specifying data for a GET request results in 400 - invalid request
+        r = self.rest_method_mapping[method](oauth_request.to_url(),
+                data=oauth_request.to_postdata() if method != "GET" else {})
 
-        except urllib2.HTTPError, error:
-            # We don't want to treat HTTP error codes (401, 404, etc.) like
-            # exceptional scenarios. We want to pass them along like anything
-            # else.
-            # Luckily, the exception raised here acts very much like an
-            # `HTTPResponse` object. Good enough for our purposes.
-            file = error
-
-        finally:
-            if file:
-                ret = {
-                    'headers': file.info().headers,
-                    'status': file.code,
-                    'body': file.read()
-                    }
-                file.close()
-
-        return ret
-
-
-def get_response(url):
-    response = ""
-    file = None
-    try:
-        file = urllib2.urlopen(url)
-        response = file.read()
-    finally:
-        if file:
-            file.close()
-
-    return response
+        return r
