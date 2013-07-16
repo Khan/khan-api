@@ -33,19 +33,15 @@ define([
             var contentTypeWithoutCharset = contentType.split(";")[0];
             // Some responses are just huge! just dump them
             if (contentTypeWithoutCharset === "application/json" &&
-                response.length < 2000000) {
+                response.length < 500000) {
                 // Large responses put in DOM kill the browser
                 // If a response is a list of something the return
                 // only one element at random.
                 var jsonResponse = JSON.parse(response);
-                if (_.isArray(jsonResponse) && jsonResponse.length > 0) {
-                    jsonResponse = [jsonResponse[_.random(
-                        0, jsonResponse.length - 1)]];
-                }
                 result = JSON.stringify(jsonResponse, null, 2);
             } else {
                 // Some arbitrary cut-off point
-                result = response.slice(0, 20000);
+                result = response.slice(0, 100000);
             }
 
             return result;
@@ -152,7 +148,7 @@ define([
                         // the element has some height from the start
                         // we hide the overlay once the animation has passed
                         // the threshold set by min-height.
-                        if(tween.prop === "height") {
+                        if (tween.prop === "height") {
                             if (!this.state.revealed && value >= minHeight) {
                                 this.setState({revealed: true});
                             }

@@ -21,14 +21,13 @@ skip_files:
 # These are part of the dev environment, but are not needed by servers.
 # Note: we *do* need to upload app.yaml: route_map reads it as a datafile.
 - ^(.*/)?\..*$
-- ^(.*/)?Gruntfile\.js$
 - ^(.*/)?requirements\.txt$
 - ^(.*/)?package\.json$
 - ^(.*/)?(.*)min\.map$
 - ^(.*/)?lint_blacklist\.txt$
 - ^(.*/)?secrets\.example\.py$
-- ^(.*/)?(node_modules|src|build)/.*$
-- ^(.*/)?third_party/.*$
+- ^(.*/)?node_modules/.*$
+- ^(.*/)?.*-src/.*$
 ####
 # Extra features tha are in this repo that aren't used by the website
 - ^README\.md$

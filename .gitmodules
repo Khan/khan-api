@@ -1,0 +1,12 @@
+[submodule "third_party/werkzeug-src"]
+	path = third_party/werkzeug-src
+	url = git@github.com:Khan/werkzeug.git
+[submodule "third_party/requests-src"]
+	path = third_party/requests-src
+	url = git@github.com:Khan/requests.git
+[submodule "third_party/flask-src"]
+	path = third_party/flask-src
+	url = git@github.com:Khan/flask.git
+[submodule "third_party/react-src"]
+	path = third_party/react-src
+	url = git@github.com:Khan/react.git
