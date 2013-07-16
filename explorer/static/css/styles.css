@@ -236,7 +236,7 @@ input.required:focus {
 .panel .panel-content {
   display: block;
   margin: 0 -15px;
-  padding: 0 15px;
+  padding: 0 15px 10px;
 }
 
 .panel .panel-heading .label {

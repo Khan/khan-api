@@ -1,0 +1,11 @@
+PIL==1.1.7
+
+# Required by lint checking
+pep8==1.0.1
+pyflakes==0.5.0
+
+# Required by khan-linter
+python-gflags==2.0
+
+# Useful for local development, e.g. by tools/devshell.py
+ipython
