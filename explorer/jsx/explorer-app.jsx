@@ -50,8 +50,7 @@ define([
                 <div class="col-lg-8 vertical-divider">
                     <PublicAPI ref="publicAPI"
                         endpoints={this.props.apiCollection}
-                        isLoggedIn={this.props.isLoggedIn}
-                        routerLoaded={this.props.routerLoaded}/>
+                        isLoggedIn={this.props.isLoggedIn} />
                 </div>
             </div>;
         }

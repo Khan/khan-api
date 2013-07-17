@@ -13,6 +13,7 @@ import oauth
 import werkzeug.debug
 
 import api_explorer_oauth_client
+import js_version
 try:
     import secrets
 except ImportError:
@@ -34,14 +35,11 @@ OAuthClient = api_explorer_oauth_client.APIExplorerOAuthClient(
     secrets.server_url, secrets.consumer_key, secrets.consumer_secret)
 
 
-@app.route("/clear")
-def clear():
-    clear_session()
-    return index()
-
 @app.route("/")
 def index():
     return flask.render_template("index.html",
+        prod=(not app.debug),
+        js_version=js_version.SHASUM,
         is_logged_in=is_logged_in())
 
 

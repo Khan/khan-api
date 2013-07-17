@@ -1,5 +1,5 @@
 application: khan-api-explorer
-version: 8
+version: 9
 runtime: python27
 api_version: 1
 default_expiration: "5d"
@@ -17,16 +17,22 @@ skip_files:
 - ^(.*/)?.*\.py[co]$
 - ^(.*/)?.*\.orig$
 - ^(.*/)?.*\.rej$
+- ^(.*/)?.*\.jsx$
 ####
 # These are part of the dev environment, but are not needed by servers.
 # Note: we *do* need to upload app.yaml: route_map reads it as a datafile.
 - ^(.*/)?\..*$
+- ^(.*/)?Makefile$
+- ^(.*/)?app\.build\.js$
 - ^(.*/)?requirements\.txt$
 - ^(.*/)?package\.json$
 - ^(.*/)?(.*)min\.map$
 - ^(.*/)?lint_blacklist\.txt$
 - ^(.*/)?secrets\.example\.py$
 - ^(.*/)?node_modules/.*$
+- ^(.*/)?js/app/.*$
+- ^(.*/)?js/app\.js$
+- ^(.*/)?third_party/js/((?!require\.min\.js).)*$
 - ^(.*/)?.*-src/.*$
 ####
 # Extra features tha are in this repo that aren't used by the website

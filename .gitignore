@@ -2,4 +2,5 @@
 secrets.py
 node_modules
 views
+main*.js
 

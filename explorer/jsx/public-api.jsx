@@ -21,8 +21,7 @@ define([
                     return <Endpoint
                         ref={"endpoint" + apiModel.urlToId()}
                         endpoint={apiModel}
-                        isLoggedIn={this.props.isLoggedIn}
-                        routerLoaded={this.props.routerLoaded}/>;
+                        isLoggedIn={this.props.isLoggedIn} />;
                 }, this);
 
                 var components = groupName.split("/");

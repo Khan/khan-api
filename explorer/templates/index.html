@@ -9,7 +9,11 @@
                 isLoggedIn: {{"true" if is_logged_in else "false"}}
             };
         </script>
+        {% if prod %}
+        <script type="text/javascript" data-main="{{ url_for('static', filename='js/main_%s.js' % js_version) }}" src="{{ url_for('static', filename='third_party/js/require.min.js') }}"></script>
+        {% else %}
         <script type="text/javascript" data-main="{{ url_for('static', filename='js/app.js') }}" src="{{ url_for('static', filename='third_party/js/require.min.js') }}"></script>
+        {% endif %}
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='third_party/css/bootstrap.min.css') }}" />
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='third_party/css/prism.css') }}" />
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='third_party/css/museo-sans.css') }}" />

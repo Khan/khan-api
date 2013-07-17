@@ -86,7 +86,6 @@ define([
                             style={{display: "none"}}>
                         <Arguments endpointSpec={this.props.endpoint}
                              isLoggedIn={this.props.isLoggedIn}
-                             routerLoaded={this.props.routerLoaded}
                              parentId={spyHref}/>
                         <p class="lead">
                             {this.props.endpoint.get("summary")}
