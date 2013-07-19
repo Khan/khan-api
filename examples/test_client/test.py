@@ -5,7 +5,7 @@ import SocketServer
 import SimpleHTTPServer
 import sys
 
-sys.path.insert(0, os.path.abspath('../../lib'))
+sys.path.insert(0, os.path.abspath('../../third_party'))
 
 from test_oauth_client import TestOAuthClient
 from oauth import OAuthToken
