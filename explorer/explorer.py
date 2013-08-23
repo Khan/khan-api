@@ -70,12 +70,14 @@ def api_proxy(method):
             response_text = cgi.escape(response_text).encode("ascii",
                 "xmlcharrefreplace")
 
-        response = flask.make_response(response_text)
-
-        # Include the original headers and status as custom response headers.
+        # Include the original headers with response body.
         # The client side will know what to do with these.
-        response.headers["X-Original-Headers"] = json.dumps(dict(
-            resource.headers))
+        # There is a limit of 498 bytes per header, which will not be changed
+        # https://code.google.com/p/googleappengine/issues/detail?id=407
+        response = flask.make_response(json.dumps({
+            "headers": dict(resource.headers),
+            "response": response_text}))
+
         response.headers["X-Original-Status"] = resource.status_code
         response.headers["Content-Type"] = resource.headers["Content-Type"]
 

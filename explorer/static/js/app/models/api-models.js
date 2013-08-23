@@ -80,7 +80,7 @@ define(["backbone", "lodash", "app/util/helpers"], function(Backbone, _, Helpers
         // Returns:
         //  String like /api/v1/exercises
         urlToGroup: function() {
-            return this.get("url").split("/").slice(0, 4).join("/");
+            return this.get("url").split("/", 4).join("/");
         },
 
         // Function to strip Flask specific markup to create nice routes
@@ -99,7 +99,9 @@ define(["backbone", "lodash", "app/util/helpers"], function(Backbone, _, Helpers
         url: "/api/v1/v1_api_descriptions",
 
         parse: function(response) {
-            return _.map(response, function(endpoint) {
+            // See comment in explorer.py which prepares response
+            // for this collection for the reason why this split is necessary.
+            return _.map(JSON.parse(response.response), function(endpoint) {
                 return new ApiEndpoint(endpoint);
             });
         }

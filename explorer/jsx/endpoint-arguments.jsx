@@ -47,11 +47,10 @@ define([
             return result;
         },
 
-        // Some
         parseHeaders: function(headers, status) {
             var headerString = "HTTP/1.1 " + status + " " +
                 HTTPCodes[status] + "\n";
-            headerString += _.map(JSON.parse(headers), function(value, key) {
+            headerString += _.map(headers, function(value, key) {
                 return Helpers.capitalizeHTTPHeader(key) + ": " + value;
             }).sort().join("\n");
 
@@ -64,8 +63,9 @@ define([
             return _.reduce(this.props.endpointSpec.get("arguments"),
                 function(acc, arg) {
                     if (arg.get("required") &&
-                        !this.refs["arg-" + arg.get("name")].getDOMNode().value) {
-                        return false
+                            !this.refs["arg-" + arg.get("name")]
+                            .getDOMNode().value) {
+                        return false;
                     }
                     return acc;
             }, true, this);
@@ -82,8 +82,8 @@ define([
                         // currently only "path:" is present
                         var regexp = new RegExp("<[^>]*" + arg.get("name") +
                             ">", "g");
-                        url = url.replace(regexp, this.refs["arg-" + arg.get("name")]
-                            .getDOMNode().value);
+                        url = url.replace(regexp, this.refs
+                            ["arg-" + arg.get("name")].getDOMNode().value);
                     }
             }, this);
 
@@ -96,11 +96,11 @@ define([
             return _.reduce(this.props.endpointSpec.get("arguments"),
                 function(acc, arg) {
                     if (!arg.get("part_of_url")) {
-                        acc[arg.get("name")] = this.refs["arg-" + arg.get("name")]
-                            .getDOMNode().value;
+                        acc[arg.get("name")] = this.refs["arg-" +
+                            arg.get("name")].getDOMNode().value;
                     }
                     return acc;
-            }, {}, this)
+            }, {}, this);
         },
 
         // Handle api call
@@ -113,14 +113,15 @@ define([
                 $.ajax({
                     url: this.replaceInUrlData(),
                     type: spec.get("http_method"),
-                    data: this.populateNonUrlData(),
-                    dataType: "text"
+                    data: this.populateNonUrlData()
                 }).done(_.bind(function(data, textStatus, jqXHR) {
+                    // See comment in explorer.py which prepares response
+                    // for this collection for the reason why the response has
+                    // given format.
                     this.setState({
-                        apiResponse: this.parseResponse(jqXHR.responseText,
+                        apiResponse: this.parseResponse(data.response,
                             jqXHR.getResponseHeader("Content-Type")),
-                        headers: this.parseHeaders(
-                            jqXHR.getResponseHeader("X-Original-Headers"),
+                        headers: this.parseHeaders(data.headers,
                             jqXHR.getResponseHeader("X-Original-Status")),
                         loading: false
                     });
@@ -173,7 +174,7 @@ define([
                         $node.css("height", "");
                         this.setState({revealed: false});
                     }, this)
-                })
+                });
             }
         },
 
@@ -237,14 +238,17 @@ define([
                 {argsForm}
                 <div class="row">
                     <div class="try-button col-lg-8 col-offset-2">
-                        <input type="submit" value="Try it" onClick={this.apiCall}
+                        <input type="submit" value="Try it"
+                            onClick={this.apiCall}
                             class="btn btn-api-action btn-large btn-block"/>
                     </div>
                 </div>
             </form>;
 
             var login = <div />;
-            if (!this.props.isLoggedIn && this.props.endpointSpec.requiresAuth()) {
+            if (!this.props.isLoggedIn &&
+                this.props.endpointSpec.requiresAuth()) {
+
                 var loginScrollBack = "/oauth_get_request_token?continue=" +
                     encodeURIComponent(this.props.parentId.slice(1));
 
@@ -294,11 +298,12 @@ define([
             };
 
             return (
-                <div class={Helpers.classFromObj(classes)} onClick={this.revealCallForm}>
-                    {login}
-                    {form}
-                    {response}
-                    {hide}
+                <div class={Helpers.classFromObj(classes)}
+                    onClick={this.revealCallForm}>
+                        {login}
+                        {form}
+                        {response}
+                        {hide}
                 </div>
             );
         }
