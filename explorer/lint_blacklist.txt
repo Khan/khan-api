@@ -1,2 +1,4 @@
 static/third-party/*
 ../third_party/*
+node_modules/*
+

@@ -3,4 +3,5 @@ secrets.py
 node_modules
 views
 main*.js
+js_version.py
 
