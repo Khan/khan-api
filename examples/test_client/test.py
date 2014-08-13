@@ -4,6 +4,7 @@ import readline
 import SocketServer
 import SimpleHTTPServer
 import sys
+import urllib2
 
 sys.path.insert(0, os.path.abspath('../../third_party'))
 
@@ -95,6 +96,10 @@ def run_tests():
         except EOFError:
             print
             break
+        except urllib2.HTTPError, e:
+            print 'Error: %s' % e
+            # Also print the response body in case it has useful information.
+            print e.read()
         except Exception, e:
             print "Error: %s" % e
 
