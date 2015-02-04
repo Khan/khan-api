@@ -8,9 +8,9 @@
 
 All example code is [MIT licensed](http://en.wikipedia.org/wiki/MIT_License).
 
-* There's a [small Python 2.7 test client](https://github.com/Khan/khan-api/tree/master/examples/test_client ) in this repo that can be used to test your API calls or to serve as an example for implementing [the Khan Academy authentication flow](https://github.com/Khan/khan-api/wiki/Khan-Academy-API-Authentication).
+* There's a [small Python 2.7 test client](examples/test_client) in this repo that can be used to test your API calls or to serve as an example for implementing [the Khan Academy authentication flow](https://github.com/Khan/khan-api/wiki/Khan-Academy-API-Authentication). There is also a [sample PHP client](examples/php_test_client).
 
-* To use the test client:
+* To use the Python test client:
 
 1. `python test.py`
 2. Enter your consumer key and secret
@@ -26,4 +26,3 @@ All example code is [MIT licensed](http://en.wikipedia.org/wiki/MIT_License).
   * /api/v1/user/exercises/addition_1/log?email=http://facebookid.khanacademy.org/123456789&dt_start=2011-03-19T08:00:00Z&dt_end=2011-03-19T17:00:00Z
 
 <img src="http://i.imgur.com/M5h4O.png"/>
-
