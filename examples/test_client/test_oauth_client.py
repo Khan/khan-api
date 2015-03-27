@@ -42,9 +42,7 @@ class TestOAuthClient(object):
         full_url = self.server_url + relative_url
         url = urlparse.urlparse(full_url)
         query_params = cgi.parse_qs(url.query)
-        for key in query_params:
-            query_params[key] = query_params[key][0]
-
+        
         oauth_request = OAuthRequest.from_consumer_and_token(
                 self.consumer,
                 token = access_token,

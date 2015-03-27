@@ -214,8 +214,14 @@ class OAuthRequest(object):
 
     def to_postdata(self):
         """Serialize as post data for a POST request."""
-        return '&'.join(['%s=%s' % (escape(str(k)), escape(str(v))) \
-            for k, v in self.parameters.iteritems()])
+        l = []
+        for k,v in self.parameters.iteritems():
+            if isinstance(v,list):
+                for i in v:
+                    l.append(escape(str(k))+'='+escape(str(i)))
+            else:
+                l.append(escape(str(k))+'='+escape(str(v)))
+        return '&'.join(l)
 
     def to_url(self):
         """Serialize as a URL for a GET request."""
@@ -230,12 +236,15 @@ class OAuthRequest(object):
         except:
             pass
         # Escape key values before sorting.
-        key_values = [(escape(_utf8_str(k)), escape(_utf8_str(v))) \
-            for k,v in params.items()]
-        # Sort lexicographically, first after key, then after value.
+        key_values = []
+        for k,v in params.items():
+            if isinstance(v,list):
+                key_values.append(escape(_utf8_str(k))+'='+escape(_utf8_str(v[0])))
+            else:
+                key_values.append(escape(_utf8_str(k))+'='+escape(_utf8_str(v)))
         key_values.sort()
         # Combine key value pairs into a string.
-        return '&'.join(['%s=%s' % (k, v) for k, v in key_values])
+        return '&'.join(key_values)
 
     def get_normalized_http_method(self):
         """Uppercases the http method."""
