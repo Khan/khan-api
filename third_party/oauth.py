@@ -239,7 +239,9 @@ class OAuthRequest(object):
         key_values = []
         for k,v in params.items():
             if isinstance(v,list):
-                key_values.append(escape(_utf8_str(k))+'='+escape(_utf8_str(v[0])))
+                key_values.extend(
+                    escape(_utf8_str(k)) + '=' + escape(_utf8_str(val))
+                    for val in v)
             else:
                 key_values.append(escape(_utf8_str(k))+'='+escape(_utf8_str(v)))
         key_values.sort()
