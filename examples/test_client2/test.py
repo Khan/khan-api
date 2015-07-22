@@ -55,12 +55,11 @@ def get_api_resource(session):
         DEFAULT_API_RESOURCE) or DEFAULT_API_RESOURCE
 
     start = time.time()
-    response = session.get(SERVER_URL + resource_url,
-        params={'format': 'json'})
+    response = session.get(SERVER_URL + resource_url)
     end = time.time()
 
     print "\n"
-    print response.json()
+    print response.text
     print "\nTime: %ss\n" % (end - start)
 
 
