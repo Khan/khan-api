@@ -54,14 +54,22 @@ def get_api_resource(session):
     resource_url = raw_input("Resource relative url (e.g. %s): " %
         DEFAULT_API_RESOURCE) or DEFAULT_API_RESOURCE
 
+    url = SERVER_URL + resource_url
+    split_url = url.split('?', 1)
+    params = {}
+
+    # Separate out the URL's parameters, if applicable.
+    if len(split_url) == 2:
+        url = split_url[0]
+        params = cgi.parse_qs(split_url[1], keep_blank_values=False)
+
     start = time.time()
-    response = session.get(SERVER_URL + resource_url)
+    response = session.get(url, params=params)
     end = time.time()
 
     print "\n"
     print response.text
     print "\nTime: %ss\n" % (end - start)
-
 
 def run_tests():
     global CONSUMER_KEY, CONSUMER_SECRET, SERVER_URL
