@@ -1,28 +1,50 @@
-# Khan Academy API Documentation and Examples
+# Khan Academy API
+
+This repository provides documentation and some examples for working with the Khan Academy API.
 
 ## Documentation
 
-* [Full API documentation](https://github.com/Khan/khan-api/wiki/Khan-Academy-API) is found in the wiki.
+Documentation can be found on the GitHub project wiki:
 
-## Examples
+* The [Khan Academy API](https://github.com/Khan/khan-api/wiki/Khan-Academy-API) wiki page has general information about how to use the API.
+* The [Khan Academy API Authentication](https://github.com/Khan/khan-api/wiki/Khan-Academy-API-Authentication) wiki page provides more detailed documentation about how to use OAuth 1 to log in as a Khan Academy user and access information.
 
-All example code is [MIT licensed](http://en.wikipedia.org/wiki/MIT_License).
+Unfortunately, not all of the documentation is completely up-to-date, so feel free to file issues if documentation looks wrong or incomplete.
 
-* There's a [small Python 2.7 test client](examples/test_client) in this repo that can be used to test your API calls or to serve as an example for implementing [the Khan Academy authentication flow](https://github.com/Khan/khan-api/wiki/Khan-Academy-API-Authentication). There is also a [sample PHP client](examples/php_test_client).
+## Asking questions and reporting bugs
 
-* To use the Python test client:
+If you have a question about how to use the API, there are a few ways you can get support:
 
-1. `python test.py`
-2. Enter your consumer key and secret
-3. Enter the Khan Academy url you want to test against (unless you're running a local version, this'll be `http://www.khanacademy.org`)
-4. A browser will pop up for you to walk through the authentication flow. When done, it will redirect you to a page that says "Ok" and in the URL there will be two parameter values you need: `oauth_token` and `oauth_token_secret`.
-5. Go back to the test.py command line and enter your new token and secret.
-6. You'll now have a loop that lets you run Khan Academy API queries, authenticated as the user you logged in as.
-7. Examples:
+* You can ask a StackOverflow question with the [khan-academy](https://stackoverflow.com/tags/khan-academy) tag. We watch for new issues with that tag, and you're also likely to get help from other community members.
+* You can file an issue in the issue tracker for this GitHub project. This is especially useful if you find a bug in one of the sample clients or with the API itself.
+* If you already have a contact at Khan Academy (e.g. through a partnership), you can reach out to them.
+* Any other questions can be sent to api-questions@khanacademy.org .
 
-  * /api/v1/playlists
-  * /api/v1/user/videos?email=kamens@gmail.com
-  * /api/v1/user/videos?email=http://facebookid.khanacademy.org/123456789
-  * /api/v1/user/exercises/addition_1/log?email=http://facebookid.khanacademy.org/123456789&dt_start=2011-03-19T08:00:00Z&dt_end=2011-03-19T17:00:00Z
+Unfortunately, we're not always actively developing and maintaining the API, so we're unlikely to add significant features and may be slow at responding to questions, but we try to get to every question and we hope you'll still find the existing API useful.
 
-<img src="http://i.imgur.com/M5h4O.png"/>
+## Sample API clients
+
+See the [examples](https://github.com/Khan/khan-api/tree/master/examples) directory for a few sample API clients. All example code is [MIT licensed](http://en.wikipedia.org/wiki/MIT_License).
+
+The most current example client is `test_client2`, which shows how to connect using the `/api/auth2` authentication endpoints.
+
+Here's an example of how you might use it (using the consumer key and secret obtained when [registering an app](https://www.khanacademy.org/api-apps/register)):
+
+```
+$ cd examples/test_client2
+$ python test.py
+consumer key: [your consumer key]
+consumer secret: [your consumer secret]
+server base url: https://www.khanacademy.org
+
+Resource relative url (e.g. /api/v1/playlists): /api/v1/user
+
+
+{"spawned_by": null, "total_seconds_watched": 140627, ...}
+
+Time: 0.647733926773s
+```
+
+## Contributing
+
+If you want to contribute your own sample client, we'd be happy to include it; just send us a pull request! There's also plenty of room for improvement in the existing clients, so we're happy to accept contributions to those as well.
