@@ -1,3 +1,5 @@
+# TODO(colin): fix these lint errors (http://pep8.readthedocs.io/en/release-1.7.x/intro.html#error-codes)
+# pep8-disable:E128,E302
 """ An interactive script for testing Khan Academy API Authentication. 
 
 This is an example of how to use the /api/auth2 authentication flow.

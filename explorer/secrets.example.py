@@ -1,3 +1,5 @@
+# TODO(colin): fix these lint errors (http://pep8.readthedocs.io/en/release-1.7.x/intro.html#error-codes)
+# pep8-disable:E221
 
 # The consumer key and secret for your app. To obtain these, visit:
 # http://www.khanacademy.org/api-apps/register

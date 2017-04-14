@@ -1,3 +1,5 @@
+# TODO(colin): fix these lint errors (http://pep8.readthedocs.io/en/release-1.7.x/intro.html#error-codes)
+# pep8-disable:E128
 """Configuration for Flask app
 
 Important: Place your keys in the secrets.py module,
