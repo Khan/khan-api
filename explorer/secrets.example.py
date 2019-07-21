@@ -7,7 +7,7 @@ consumer_key    = ""
 consumer_secret = ""
     
 # The base URL your app is talking to. You won't need to change this.
-server_url = "http://www.khanacademy.org"
+server_url = "https://www.khanacademy.org"
     
 # The secret key used to encrypt your cookies. Generate this randomly by
 # following the directions at:
