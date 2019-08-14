@@ -1,4 +1,5 @@
 # Khan Academy API
+Please Note: We are no longer actively developing or maintaining this API. It is offered for public use as is.
 
 This repository provides documentation and some examples for working with the Khan Academy API.
 
@@ -13,12 +14,13 @@ Unfortunately, not all of the documentation is completely up-to-date, so feel fr
 
 ## Asking questions and reporting bugs
 
+Please Note: We are no longer actively developing or maintaining this API. It is offered for public use as is.
+
 If you have a question about how to use the API, there are a few ways you can get support:
 
 * You can ask a StackOverflow question with the [khan-academy](https://stackoverflow.com/tags/khan-academy) tag. We watch for new issues with that tag, and you're also likely to get help from other community members.
 * You can file an issue in the issue tracker for this GitHub project. This is especially useful if you find a bug in one of the sample clients or with the API itself.
 * If you already have a contact at Khan Academy (e.g. through a partnership), you can reach out to them.
-* Any other questions can be sent to api-questions@khanacademy.org .
 
 Unfortunately, we're not always actively developing and maintaining the API, so we're unlikely to add significant features and may be slow at responding to questions, but we try to get to every question and we hope you'll still find the existing API useful.
 
