@@ -16,7 +16,7 @@ CONSUMER_SECRET = ""
 
 # Oauth configuration values described at:
 # https://github.com/Khan/khan-api/wiki/Khan-Academy-API-Authentication
-SERVER_URL = "http://www.khanacademy.org"
+SERVER_URL = "https://www.khanacademy.org"
 REQUEST_TOKEN_URL = SERVER_URL + "/api/auth2/request_token"
 ACCESS_TOKEN_URL = SERVER_URL + "/api/auth2/access_token"
 AUTHORIZE_URL = SERVER_URL + "/api/auth2/authorize"
