@@ -1,5 +1,4 @@
 # Khan Academy API
-Please Note: We are no longer actively developing or maintaining this API. It is offered for public use as is.
 
 **Deprecation notice**: we have recently improved our site's usage-time-tracking capabilities, and are no longer planning to support the old form of this data that is provided via this API. All usage-time-related fields (e.g. `time_taken`, `total_seconds_watched`, etc.) will be removed as of Nov 30 2019. However, you can find new reports featuring our new and improved usage-time in your Progress tab and in the Teacher Tools section of the khanacademy.org site.
 
