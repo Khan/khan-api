@@ -39,7 +39,7 @@ Example
 3) Download and install smarty into the smarty/core/smarty directory:
 
 # cd /home/john/src/oauth-php/example/server/core
-# wget 'http://www.smarty.net/do_download.php?download_file=Smarty-2.6.19.tar.gz'
+# wget 'https://www.smarty.net/do_download.php?download_file=Smarty-2.6.19.tar.gz'
 # tar zxf Smarty-2.6.19.tar.gz
 # mv Smarty-2.6.19 smarty
 
