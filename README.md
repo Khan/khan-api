@@ -11,10 +11,10 @@ Removal timing:
 |---------------------|-----------------------|
 | /api/v1/badges/*    | January 6, 2020       |
 | /api/v1/user/*      | January 6, 2020       |
-| /api/v1/playlists/* | July 1, 2020          |
-| /api/v1/topictree   | July 1, 2020          |
-| /api/v1/topic/*     | July 1, 2020          |
-| /api/v1/videos/*    | July 1, 2020          |
-| /api/v1/exercises/* | July 1, 2020          |
+| /api/v1/playlists/* | July 29, 2020         |
+| /api/v1/topictree   | July 29, 2020         |
+| /api/v1/topic/*     | July 29, 2020         |
+| /api/v1/videos/*    | July 29, 2020         |
+| /api/v1/exercises/* | July 29, 2020         |
 
 If you have any questions, please contact our Support Center: https://khanacademy.zendesk.com/hc/en-us.
